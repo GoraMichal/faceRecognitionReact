@@ -4,6 +4,7 @@ import './App.css';
 import Navigation from './components/Navigation/Navigation';
 import Logo from './components/Logo/Logo';
 import ImageLink from './components/ImageLink/ImageLink';
+import Rank from './components/Rank/Rank';
 
 function App() {
     return (
@@ -11,6 +12,7 @@ function App() {
             <header>
                 <Navigation />
                 <Logo />
+                <Rank />
                 <ImageLink />
                 {/*
                     <FaceRecoLogic />
