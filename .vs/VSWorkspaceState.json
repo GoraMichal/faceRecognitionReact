@@ -6,8 +6,9 @@
     "\\src\\components",
     "\\src\\components\\ImageLink",
     "\\src\\components\\Logo",
-    "\\src\\components\\Navigation"
+    "\\src\\components\\Navigation",
+    "\\src\\components\\Rank"
   ],
-  "SelectedNode": "\\src\\index.css",
+  "SelectedNode": "\\src\\App.js",
   "PreviewInSolutionExplorer": false
 }
