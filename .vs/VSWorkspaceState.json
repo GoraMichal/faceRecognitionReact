@@ -4,6 +4,7 @@
     "\\public",
     "\\src",
     "\\src\\components",
+    "\\src\\components\\FaceRecognition",
     "\\src\\components\\ImageLink",
     "\\src\\components\\Logo",
     "\\src\\components\\Navigation",

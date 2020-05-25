@@ -1,5 +1,6 @@
 // JavaScript source code
 import React from 'react';
+import './ImageLink.css';
 
 const ImageLink = ({onInputChange, onButtonSubmit}) => {
     return (
