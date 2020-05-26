@@ -10,6 +10,6 @@
     "\\src\\components\\Navigation",
     "\\src\\components\\Rank"
   ],
-  "SelectedNode": "\\src\\App.js",
+  "SelectedNode": "\\src\\components\\FaceRecognition\\FaceRecognition.js",
   "PreviewInSolutionExplorer": false
 }
