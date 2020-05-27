@@ -4,12 +4,9 @@
     "\\public",
     "\\src",
     "\\src\\components",
-    "\\src\\components\\FaceRecognition",
     "\\src\\components\\ImageLink",
-    "\\src\\components\\Logo",
-    "\\src\\components\\Navigation",
-    "\\src\\components\\Rank"
+    "\\src\\components\\Signin"
   ],
-  "SelectedNode": "\\src\\components\\ImageLink\\ImageLink.js",
+  "SelectedNode": "\\src\\components\\Signin\\Signin.js",
   "PreviewInSolutionExplorer": false
 }
