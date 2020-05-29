@@ -4,7 +4,8 @@
     "\\public",
     "\\src",
     "\\src\\components",
-    "\\src\\components\\ImageLink",
+    "\\src\\components\\Navigation",
+    "\\src\\components\\Register",
     "\\src\\components\\Signin"
   ],
   "SelectedNode": "\\src\\components\\Signin\\Signin.js",
