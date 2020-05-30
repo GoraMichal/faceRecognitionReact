@@ -2,16 +2,17 @@
 import React from 'react';
 
 class Signin extends React.Component {
-//const Signin = ({ onRouteChange }) => {
+    //const Signin = ({ onRouteChange }) => {
 
     constructor(props) {
         super(props);
         this.state = {
             signInEmail: '',
-            signInPassowrd: ''
+            signInPassword: ''
         }
     }
 
+    //Get email, pass
     onEmailChamge = (event) => {
         this.setState({ signInEmail: event.target.value })
     }
@@ -23,14 +24,21 @@ class Signin extends React.Component {
     onSubmitSignIn = () => {
         fetch('http://localhost:3000/signin', {
             method: 'post',
-            headers: { 'Content-Type': 'application/json' },
+            headers: {'Content-Type': 'application/json'},
             body: JSON.stringify({
                 email: this.state.signInEmail,
-                password: this.state.signInPassowrd
+                password: this.state.signInPassword
             })
-        });
-        //console.log(this.state);
-        this.props.onRouteChange('home');
+        })
+
+            .then(response => response.json())
+            .then(data => {
+                if (data === 'success') {
+                    this.props.onRouteChange('home');
+
+                }
+            })
+        console.log(this.state);
     }
 
     render() {
@@ -43,7 +51,7 @@ class Signin extends React.Component {
                             <legend className="f3 fw6 ph0 mh0">Zaloguj</legend>
                             <div className="mt3">
                                 <label className="db fw6 lh-copy f6" htmlFor="email-address">Email</label>
-                                <input 
+                                <input
                                     className="pa2 input-reset ba bg-transparent hover-bg-black hover-white w-100"
                                     type="email"
                                     name="email-address"
@@ -65,7 +73,7 @@ class Signin extends React.Component {
                         <div className="">
                             <input
                                 //onClick={() => onRouteChange('home')}
-                                onClick={() => this.onSubmitSignIn}
+                                onClick={() => this.onSubmitSignIn()}
                                 className="b ph3 pv2 input-reset ba b--black bg-transparent grow pointer f6 dib"
                                 type="submit"
                                 value="Zaloguj"
@@ -73,7 +81,7 @@ class Signin extends React.Component {
                         </div>
                         <div className="lh-copy mt3">
                             <p onClick={() => onRouteChange('register')}
-                               className="f6 link dim black db pointer">Zarejestruj</p>
+                                className="f6 link dim black db pointer">Zarejestruj</p>
                         </div>
                     </div>
                 </main>

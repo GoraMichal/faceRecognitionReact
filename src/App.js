@@ -44,7 +44,9 @@ class App extends Component {
     }
 
     onButtonSubmit = () => {
+        //multi faces
         let n = 0;
+
         this.setState({ imageUrl: this.state.input });
         app.models
             .predict(
@@ -63,6 +65,7 @@ class App extends Component {
     calculateFaceLocation = (data, n) => {
         const clarifaiFace = data.outputs[0].data.regions[n].region_info.bounding_box;
         const image = document.getElementById('inputimage');
+        //Number is a wrapper obj with numerical values
         const width = Number(image.width);
         const height = Number(image.height);
 
@@ -99,26 +102,27 @@ class App extends Component {
                     params={particlesOptions}
                 />
                 <Navigation isSignedIn={isSignedIn} onRouteChange={this.onRouteChange} />
-                {this.state.route === 'home'
-                    ? <div>
-                        <Logo />
-                        <Rank />
-                        <ImageLink
-                            onInputChange={this.onInputChange}
-                            onButtonSubmit={this.onButtonSubmit}
-                        />
-                        <FaceRecognition
-                            imageUrl={imageUrl}
-                            box={box}
-                        />
-                    </div>
-                    : (
-                        route === 'signin'
-                            ? <Signin onRouteChange={this.onRouteChange} />
-                            : <Register onRouteChange={this.onRouteChange} />
-                    )
-                }
-            </div >
+                {
+                    route === 'home'
+                        ? <div>
+                            <Logo />
+                            <Rank />
+                            <ImageLink
+                                onInputChange={this.onInputChange}
+                                onButtonSubmit={this.onButtonSubmit}
+                            />
+                            <FaceRecognition
+                                imageUrl={imageUrl}
+                                box={box}
+                            />
+                        </div>
+                        : (
+                            route === 'signin'
+                                ? <Signin onRouteChange={this.onRouteChange} />
+                                : <Register onRouteChange={this.onRouteChange} />
+                        )
+            }
+            </div>
         );
     }
 }
