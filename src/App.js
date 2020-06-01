@@ -47,7 +47,7 @@ class App extends Component {
         }
     }
 
-    registerUser = (data) => {
+    loadUser = (data) => {
         this.setState({
             user: {
                 id: data.id,
@@ -64,17 +64,33 @@ class App extends Component {
         this.setState({ input: event.target.value });
     }
 
-    onButtonSubmit = () => {
-        //multi faces
-        let n = 0;
-
+    onImageSubmit = () => {
         this.setState({ imageUrl: this.state.input });
         app.models
             .predict(
                 Clarifai.FACE_DETECT_MODEL,
                 this.state.input)
-
-            .then(response => this.displayFaceBox(this.calculateFaceLocation(response, n)))
+            .then(response => {
+                if (response) {
+                    fetch('http://localhost:3000/image', {
+                        method: 'put',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify({
+                            id: this.state.user.id
+                        })
+                    })
+                        .then(response => response.json())
+                        .then(count => {
+                            this.setState(Object.assign(this.state.user, { entries: count }))
+                            //this.setState({
+                            //    user: {
+                            //        entries: count
+                            //    }
+                        })
+ 
+                }
+                this.displayFaceBox(this.calculateFaceLocation(response))
+            })
             .catch(err => console.log(err));
     }
 
@@ -84,8 +100,8 @@ class App extends Component {
     //        .then(console.log)
     //}
 
-    calculateFaceLocation = (data, n) => {
-        const clarifaiFace = data.outputs[0].data.regions[n].region_info.bounding_box;
+    calculateFaceLocation = (data) => {
+        const clarifaiFace = data.outputs[0].data.regions[0].region_info.bounding_box;
         const image = document.getElementById('inputimage');
         //Number is a wrapper obj with numerical values
         const width = Number(image.width);
@@ -128,10 +144,10 @@ class App extends Component {
                     route === 'home'
                         ? <div>
                             <Logo />
-                            <Rank />
+                            <Rank name={this.state.user.name} entries={this.state.user.entries} />
                             <ImageLink
                                 onInputChange={this.onInputChange}
-                                onButtonSubmit={this.onButtonSubmit}
+                                onImageSubmit={this.onImageSubmit}
                             />
                             <FaceRecognition
                                 imageUrl={imageUrl}
@@ -140,8 +156,8 @@ class App extends Component {
                         </div>
                         : (
                             route === 'signin'
-                                ? <Signin onRouteChange={this.onRouteChange} />
-                                : <Register registerUser={this.registerUser} onRouteChange={this.onRouteChange} />
+                                ? <Signin loadUser={this.loadUser} onRouteChange={this.onRouteChange} />
+                                : <Register loadUser={this.loadUser} onRouteChange={this.onRouteChange} />
                         )
                 }
             </div>
