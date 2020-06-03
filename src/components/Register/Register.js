@@ -30,9 +30,9 @@ class Register extends React.Component {
             method: 'post',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({
-                email: this.state.registerEmail,
-                name: this.state.registerName,
-                password: this.state.registerPassword
+                email: this.state.email,
+                name: this.state.name,
+                password: this.state.password
             })
         })
             .then(response => response.json())
@@ -42,7 +42,7 @@ class Register extends React.Component {
                     this.props.onRouteChange('home');
                 }
             })
-        console.log(this.state);
+        //console.log(this.state);
     }
 
     render() {

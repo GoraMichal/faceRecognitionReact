@@ -79,8 +79,10 @@ class App extends Component {
                             id: this.state.user.id
                         })
                     })
+                        //zwracanie odpowiedzi w formatach: response.text, response.formData, response.blob, response.arrayBuffer
                         .then(response => response.json())
                         .then(count => {
+                            //object assign - kopiuje wartosci z obieku/ow do obiektu docelowego (cel, ...zrodla)
                             this.setState(Object.assign(this.state.user, { entries: count }))
                             //this.setState({
                             //    user: {
@@ -144,7 +146,10 @@ class App extends Component {
                     route === 'home'
                         ? <div>
                             <Logo />
-                            <Rank name={this.state.user.name} entries={this.state.user.entries} />
+                            <Rank
+                                name={this.state.user.name}
+                                entries={this.state.user.entries}
+                            />
                             <ImageLink
                                 onInputChange={this.onInputChange}
                                 onImageSubmit={this.onImageSubmit}
