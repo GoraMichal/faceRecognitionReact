@@ -82,20 +82,20 @@ class App extends Component {
                         })
                     })
                         //zwracanie odpowiedzi w formatach: response.text, response.formData, response.blob, response.arrayBuffer
+                        //object assign - kopiuje wartosci z obieku/ow do obiektu docelowego (cel, ...zrodla)
                         .then(response => response.json())
                         .then(count => {
-                            //object assign - kopiuje wartosci z obieku/ow do obiektu docelowego (cel, ...zrodla)
                             this.setState(Object.assign(this.state.user, { entries: count }))
+
                             //this.setState({
                             //    user: {
                             //        entries: count
                             //    }
                         })
- 
+                        .catch(console.log);
                 }
                 this.displayFaceBox(this.calculateFaceLocation(response))
             })
-            .catch(err => console.log(err));
     }
 
     //componentDidMount() {
