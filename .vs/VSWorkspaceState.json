@@ -11,6 +11,6 @@
     "\\src\\components\\Register",
     "\\src\\components\\Signin"
   ],
-  "SelectedNode": "\\src\\App.js",
+  "SelectedNode": "\\src\\components\\Register\\Register.js",
   "PreviewInSolutionExplorer": false
 }
